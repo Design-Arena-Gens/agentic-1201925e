@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dark Mode Toggle</title>
+    <meta name="description" content="A minimal dark mode toggle button" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      (function() {
+        try {
+          const stored = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const initialDark = stored ? stored === 'dark' : prefersDark;
+          if (initialDark) document.documentElement.classList.add('dark');
+          document.documentElement.style.visibility = 'visible';
+        } catch (e) {
+          document.documentElement.style.visibility = 'visible';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="container">
+      <button id="theme-toggle" class="toggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle dark mode">
+        <span class="icon" aria-hidden="true">🌙</span>
+        <span class="label">Dark mode</span>
+      </button>
+    </header>
+
+    <main class="container">
+      <h1>Dark Mode Toggle</h1>
+      <p>This is a minimal static site with a dark mode toggle. The preference is saved and respects system settings.</p>
+      <section class="card">
+        <h2>Sample Content</h2>
+        <p>Use the button above to switch between light and dark themes.</p>
+        <a class="btn" href="#">Example Button</a>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <small>Built for deployment on Vercel</small>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
